@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<body>
+		<canvas id = 'lab03' width="500" height="500" style="border: 1px solid black;"/>
+		<script>
+			let canvas = document.getElementById('lab03');
+			let context = canvas.getContext('2d');
+			
+			var x0 = 250;
+			var y0 = 250;
+			var rad = 1.57;
+			var x1 = x0 + 250 * Math.cos(rad);
+			var y1 = y0 - 250 * Math.sin(rad);
+			var deltaX;
+			var deltaY;
+			var error = 0;
+			var deltaERROR;
+			var degree = 0;
+			
+			function draw(){
+			
+			context.clearRect(0,0,canvas.width, canvas.height);
+			
+			deltaX = Math.abs(x1 - x0);
+			deltaY = Math.abs(y1 - y0);
+			
+			context.fillStyle = '#FF4500';
+			
+			if (degree >= 0 && degree < 45){
+			deltaERROR = deltaX + 1;
+			
+			x = x0;
+			
+			for (var y = y0; y >= y1; y--){
+				context.fillRect(x, y, 3, 3);
+				error += deltaERROR;
+				if (error >= deltaY + 1) {
+					x += 1;
+					error -= deltaY + 1;
+				}
+			}
+			
+			rad -= 0.105;
+			x1 = x0 + 250 * Math.cos(rad);
+			y1 = y0 - 250 * Math.sin(rad);
+			degree += 6;
+			return;
+			}
+			
+			if (degree >= 45 && degree < 90){
+			deltaERROR = deltaY + 1;
+			
+			y = y0;
+			
+			for (var x = x0; x <= x1; x++){
+				context.fillRect(x, y, 3, 3);
+				error += deltaERROR;
+				if (error >= deltaX + 1) {
+					y -= 1;
+					error -= deltaX + 1;
+				}
+			}
+			
+			rad -= 0.105;
+			x1 = x0 + 250 * Math.cos(rad);
+			y1 = y0 - 250 * Math.sin(rad);
+			degree += 6;
+			return;
+			}
+			
+			if (degree >= 90 && degree < 135){
+			deltaERROR = deltaY + 1;
+			
+			y = y0;
+			
+			for (var x = x0; x <= x1; x++){
+				context.fillRect(x, y, 3, 3);
+				error += deltaERROR;
+				if (error >= deltaX + 1) {
+					y += 1;
+					error -= deltaX + 1;
+				}
+			}
+			
+			rad -= 0.105;
+			x1 = x0 + 250 * Math.cos(rad);
+			y1 = y0 - 250 * Math.sin(rad);
+			degree += 6;
+			return;
+			}
+			
+			if (degree > 135 && degree <= 180){
+			deltaERROR = deltaX + 1;
+			
+			x = x0;
+			
+			for (var y = y0; y <= y1; y++){
+				context.fillRect(x, y, 3, 3);
+				error += deltaERROR;
+				if (error >= deltaY + 1) {
+					x += 1;
+					error -= deltaY + 1;
+				}
+			}
+			
+			rad -= 0.105;
+			x1 = x0 + 250 * Math.cos(rad);
+			y1 = y0 - 250 * Math.sin(rad);
+			degree += 6;
+			return;
+			}
+			
+			if (degree >= 180 && degree < 225){
+			deltaERROR = deltaX + 1;
+			
+			x = x0;
+			
+			for (var y = y0; y <= y1; y++){
+				context.fillRect(x, y, 3, 3);
+				error += deltaERROR;
+				if (error >= deltaY + 1) {
+					x -= 1;
+					error -= deltaY + 1;
+				}
+			}
+			
+			rad -= 0.105;
+			x1 = x0 + 250 * Math.cos(rad);
+			y1 = y0 - 250 * Math.sin(rad);
+			degree += 6;
+			return;
+			}
+			
+			if (degree >= 225 && degree < 270){
+			deltaERROR = deltaY + 1;
+			
+			y = y0;
+			
+			for (var x = x0; x >= x1; x--){
+				context.fillRect(x, y, 3, 3);
+				error += deltaERROR;
+				if (error >= deltaX + 1) {
+					y += 1;
+					error -= deltaX + 1;
+				}
+			}
+			
+			rad -= 0.105;
+			x1 = x0 + 250 * Math.cos(rad);
+			y1 = y0 - 250 * Math.sin(rad);
+			degree += 6;
+			return;
+			}
+			
+			if (degree >= 270 && degree < 315){
+			deltaERROR = deltaY + 1;
+			
+			y = y0;
+			
+			for (var x = x0; x >= x1; x--){
+				context.fillRect(x, y, 3, 3);
+				error += deltaERROR;
+				if (error >= deltaX + 1) {
+					y -= 1;
+					error -= deltaX + 1;
+				}
+			}
+			
+			rad -= 0.105;
+			x1 = x0 + 250 * Math.cos(rad);
+			y1 = y0 - 250 * Math.sin(rad);
+			degree += 6;
+			return;
+			}
+
+		
+			if (degree >= 315 && degree < 360){
+			deltaERROR = deltaX + 1;
+			
+			x = x0;
+			
+			for (var y = y0; y >= y1; y--){
+				context.fillRect(x, y, 3, 3);
+				error += deltaERROR;
+				if (error >= deltaY + 1) {
+					x -= 1;
+					error -= deltaY + 1;
+				}
+			}
+			
+			rad -= 0.105;
+			x1 = x0 + 250 * Math.cos(rad);
+			y1 = y0 - 250 * Math.sin(rad);
+			degree += 6;
+			
+			if (degree == 354){
+			degree = 0;
+			rad = 1.57;
+			x1 = x0 + 250 * Math.cos(rad);
+			y1 = y0 - 250 * Math.sin(rad);
+			}
+			
+			return;
+			}
+		}
+		
+		setInterval(draw, 1000);
+		</script>
+</body>
+</html>
